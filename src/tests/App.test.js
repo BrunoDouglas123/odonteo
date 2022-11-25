@@ -1,40 +1,21 @@
 import { render, screen } from "@testing-library/react";
 import App from "../App.js";
 
-describe("Test sanity of routes", () => {
-  beforeEach(() => {
-    const currentState = window.history.state;
-
-    window.history.replaceState(currentState, "", "/");
+describe("Test routes", () => {
+  it("test Login", async () => {
+    const currenState = window.history.state;
+    window.history.replaceState(currenState, "", "/");
   });
-
-  it("Should render login page", async () => {
-    window.history.pushState({}, "Login page", "/login");
-
-    render(<App />);
-
-    const loginPage = screen.getByTestId("login-test-id");
-
-    expect(loginPage).toBeInTheDocument();
+  it("render login", async () => {
+    window.history.pushState({}, "Login ", "/login");
+    render(<App></App>);
+    const loginPg = screen.getByTestId("login-dtTest");
+    expect(loginPg).toBeInTheDocument();
   });
-
-  // it('Should render main page', async () => {
-  //     window.history.pushState({}, 'Main page', '/')
-
-  //     render(<App/>)
-
-  //     const mainPage = screen.getByTestId('main-test-id');
-
-  //     expect(mainPage).toBeInTheDocument();
-  // });
-
-  // it('Should render statement page', async () => {
-  //     window.history.pushState({}, 'Statement page', '/statement')
-
-  //     render(<App/>)
-
-  //     const statementPage = screen.getByTestId('statement-test-id');
-
-  //     expect(mainPage).toBeInTheDocument();
-  // });
+  it("Should Render statment pg", async () => {
+    window.history.pushState({}, "statment page", "/statement");
+    render(<App></App>);
+    const statmentPg = screen.getByTestId("login-dtTest");
+    expect(statmentPg).toBeInTheDocument("statment-test");
+  });
 });

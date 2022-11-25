@@ -102,7 +102,7 @@ function Main() {
   }
 
   return (
-    <main data-testid="main-test-id">
+    <main>
       {message.show && (
         <Message addClass={message.status}>{message.text}</Message>
       )}

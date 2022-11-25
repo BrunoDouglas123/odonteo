@@ -43,11 +43,15 @@ function Login() {
       body: JSON.stringify(loginInformation),
     };
 
+    console.log("got here");
+
     const {
       user,
       message: apiMessage,
       token,
     } = await fetchApi("https://odonteo-backend.herokuapp.com/login", options);
+
+    console.log(message);
 
     if (apiMessage === "Login efetuado com sucesso!") {
       localStorage.setItem("user", JSON.stringify(user));
@@ -59,7 +63,7 @@ function Login() {
   }
 
   return (
-    <main data-testid="login-test-id">
+    <main>
       {message.show && (
         <Message addClass={message.status}>{message.text}</Message>
       )}
@@ -71,7 +75,6 @@ function Login() {
             id="email"
             name="email"
             type="text"
-            data-testid="email-id"
             onChange={(e) => handleChange(e, setLoginInformation)}
           />
         </label>
@@ -82,7 +85,6 @@ function Login() {
             id="password"
             name="password"
             type="password"
-            data-testid="password-id"
             onChange={(e) => handleChange(e, setLoginInformation)}
           />
         </label>
